@@ -74,7 +74,7 @@ vim core-site.xml
     <property>
    		<name>ha.zookeeper.quorum</name>
    		<value>node1:2181,node3:2181,zk3.node4:2181</value>
- 	</property>
+ 	  </property>
 </configuration>
 ```
 DataNode的主机名:<br>
