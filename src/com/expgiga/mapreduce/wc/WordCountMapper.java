@@ -1,4 +1,4 @@
-package com.expgiga.mapreduce;
+package com.expgiga.mapreduce.wc;
 
 import java.io.IOException;
 

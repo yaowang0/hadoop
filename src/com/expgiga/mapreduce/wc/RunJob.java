@@ -1,4 +1,4 @@
-package com.expgiga.mapreduce;
+package com.expgiga.mapreduce.wc;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
