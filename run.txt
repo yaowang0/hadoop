@@ -5,7 +5,7 @@ System.setProperty("HADOOP_USER_NAME", "root");
 本地测试环境(windows)：
 	在windows的hadoop目录bin目录有一个winutils.exe
 	1、在windows下配置hadoop的环境变量
-	2、拷贝debug工具(winutils.ext)到HADOOP_HOME/bin
+	2、拷贝debug工具(winutils.exe)到HADOOP_HOME/bin
 	3、修改hadoop的源码 ，注意：确保项目的lib需要真实安装的jdk的lib
 	
 	4、MR调用的代码需要改变：
