@@ -1,7 +1,7 @@
 Hadoop2.5 HA搭建<br>
 四台机器：hadoop1，hadoop2，hadoop3，hadoop4<br>
 
-Hadoop1	 NN(Y)          ZK(Y)   ZKFC(Y)			
+Hadoop1	 NN(Y)          ZK(Y)   ZKFC(Y) <br>
 Hadoop2	 NN(Y)	DN(Y)	  ZK(Y)	  ZKFC(Y)	  JN(Y)	  RM(Y)	  NM（任务管理）(Y)<br>
 Hadoop3		      DN(Y)		ZK(Y)		          JN(Y)           NM（任务管理）(Y)<br>
 Hadoop4		      DN(Y)		                  JN(Y)           NM（任务管理）(Y)<br>
@@ -98,7 +98,7 @@ c)在dataDir目录中创建一个myid的文件，文件内容分别为1，2，3<
 7.在其中一个namenode上格式化：hdfs namenode -format<br>
 
 8.把刚刚格式化之后的元数据拷贝到另外一个namenode上<br>
-a)启动刚刚格式化的namenode<br>
+a)启动刚刚格式化的namenode   hadoop-daemon.sh start namenode<br>
 b)在没有格式化的namenode上执行：hdfs namenode -bootstrapStandby<br>
 c)启动第二个namenode<br>
 
