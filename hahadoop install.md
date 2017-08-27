@@ -1,11 +1,10 @@
 Hadoop2.5 HA搭建<br>
 四台机器：hadoop1，hadoop2，hadoop3，hadoop4<br>
 
-	       NN DN ZK	ZKFC  JN	RM  NM（任务管理） 
-Hadoop1	 Y      Y   Y			
-Hadoop2	 Y	Y	  Y	  Y	  Y	  Y	  Y <br>
-Hadoop3		  Y	  Y		    Y		    Y <br>
-Hadoop4		  Y			      Y		    Y <br>
+Hadoop1	 NN(Y)          ZK(Y)   ZKFC(Y)			
+Hadoop2	 NN(Y)	DN(Y)	  ZK(Y)	  ZKFC(Y)	  JN(Y)	  RM(Y)	  NM（任务管理）(Y)<br>
+Hadoop3		      DN(Y)		ZK(Y)		          JN(Y)           NM（任务管理）(Y)<br>
+Hadoop4		      DN(Y)		                  JN(Y)           NM（任务管理）(Y)<br>
 
 1.core-site.xml <br>
 ```
@@ -82,11 +81,13 @@ Hadoop4		  Y			      Y		    Y <br>
 3. 准备zookeeper<br>
 a)三台zookeeper：hadoop1，hadoop2，hadoop3<br>
 b)编辑zoo.cfg配置文件<br>
-  i.修改dataDir=/opt/zookeeper<br>
-  ii.server.1=hadoop1:2888:3888<br>
-     server.2=hadoop2:2888:3888<br>
-     server.3=hadoop3:2888:3888<br>
-c)在dataDir目录中创建一个myid的文件，文件内容为1，2，3<br>
+```
+dataDir=/opt/zookeeper
+server.1=hadoop1:2888:3888
+server.2=hadoop2:2888:3888
+server.3=hadoop3:2888:3888
+```
+c)在dataDir目录中创建一个myid的文件，文件内容分别为1，2，3<br>
 
 4.配置hadoop中的slaves<br>
 
