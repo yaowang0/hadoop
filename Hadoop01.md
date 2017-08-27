@@ -16,26 +16,26 @@ Hadoop组件：
 3.YARN
 
 HDFS(Hadoop Distributed File System)：
-- 高容错
+- 高容错<br>
   (1)数据自动保存多个副本<br>
   (2)副本丢失后，自动恢复<br>
-- 适合批处理
+- 适合批处理<br>
   (1)移动计算而非数据<br>
   (2)数据位置暴露给计算框架<br>
-- 适合大数据处理
+- 适合大数据处理<br>
   (1)GB、TB、PB<br>
   (2)百万规模以上的文件数量<br>
   (3)10K+ 节点<br>
-- 可构建在廉价机器上
+- 可构建在廉价机器上<br>
   (1)通过多副本提高可靠性<br>
   (2)提供了容错和恢复机制<br>
-- 低延迟数据访问
+- 低延迟数据访问<br>
   (1)比如毫秒级<br>
   (2)低延迟与高吞吐率<br>
-- 小文件读取
+- 小文件读取<br>
   (1)占用NameNode大量内存<br>
   (2)寻道时间超过读取时间<br>
-- 并发写入、文件随机修改
+- 并发写入、文件随机修改<br>
   (1)一个文件只能有一个写者<br>
   (2)仅支持append<br>
 
@@ -43,10 +43,10 @@ HDFS架构：<br>
 ![avatar](hdfsarchitecture.png)<br>
 
 DataNode：存储数据
-- 文件被切分为固定大小的数据块
+- 文件被切分为固定大小的数据块<br>
   (1)默认数据块大小为128MB（2.X）（在1.x中为64MB），可以配置<br>
   (2)若文件大小不到128MB，则单独存成一个Block<br>
-- 一个文件存储方式
+- 一个文件存储方式<br>
   (1)按大小被切分成若干个Block，存储到不同的节点上<br>
   (2)默认情况下每个Block都有三个副本<br>
 - Block大小和副本数量通过Client端上传文件时设置，文件上传成功后副本数可以变更，Block Size不可变更。
@@ -56,11 +56,11 @@ HDFS的设计思想：<br>
 
 NameNode(NN)：保存Meta Data
 - NameNode主要功能：接受客户端的读写服务
-- NameNode保存meta data信息：
+- NameNode保存meta data信息：<br>
   (1)文件ownership和permissions<br>
   (2)文件包含哪些块<br>
   (3)Block保存在哪个DataNode(由DataNode启动时上报)<br>
-- NameNode的metadata信息在启动后会加载到内存
+- NameNode的metadata信息在启动后会加载到内存<br>
   (1)metadata存储到磁盘文件名为”fsimage”<br>
   (2)Block的位置信息不会保存到fsimage<br>
   (3)edits记录对metadata的操作日志<br>
@@ -71,7 +71,7 @@ NameNode(NN)：保存Meta Data
 
 SecondaryNameNode(SNN):
 - 它不是NN的备份(但可以做备份)，它的主要的工作是帮助NN合并edits log，修改fsimage,减少NN启动时间。
-- SNN执行合并时机
+- SNN执行合并时机<br>
   (1)根据配置文件设置的时间间隔fs.checkpoint.period默认为3600s<br>
   (2)根据配置文件设置edits log大小fs.checkpoint.size规定edits文件的最大值，默认是64MB<br>
 
