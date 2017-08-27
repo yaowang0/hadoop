@@ -52,4 +52,10 @@ MapReduce的split的大小：
 
 YARN:<br>
 ![avatar](yarn_architecture.gif)<br>
+NodeManage
+- Container
+- App Mstr<br>
+
+程序jar包，提交给ResourManager，ResourManager将程序传到每个NodeManager，由App Mstr负责执行。<br>
+Container和App Mstr默认是没有的，只有当任务开始执行时，才会生成。<br>
 
