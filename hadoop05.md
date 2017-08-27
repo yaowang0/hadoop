@@ -47,6 +47,9 @@ MapReduce的split的大小：
 - min.split(10M)
 - block(128M)
 - max(min.split, min(max.split, block))<br>
+
 任何一个碎片段的大小不能超过一个block。<br>
 
+YARN:<br>
+![avatar](yarn_architecture.gif)<br>
 
