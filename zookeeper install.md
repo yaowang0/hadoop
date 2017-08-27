@@ -37,3 +37,5 @@ cd bin<br>
 在当前目录下有zookeeper.out日志。<br>
 zookeeper启动后，其内存数据库启动，通过zkCli.sh可以访问。<br>
 
+jsp命令：<br>
+QuorunPeerMain

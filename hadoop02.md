@@ -17,7 +17,7 @@ cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys<br>
 2.node3收到请求，将node3的authorized_keys中的公钥比对，若一致，则node3将密码发送给node1<br>
 3.node1将node3发送来的密码，发送给node3，取得连接<br>
 
-二、安装（节点名字node1,node3,node4,node5）<br>
+二、安装非HA的完全分布式（节点名字node1,node3,node4,node5）<br>
 在node1上：安装路径在/home/<br>
 tar -zxvf Hadoop-2.5.1_x64.tar.gz<br>
 
@@ -33,24 +33,26 @@ vim core-site.xml
 <configuration>
     <property>
         <name>fs.defaultFS</name>          <!-- NameNode所在的主机和端口-->
-        <value>hdfs://node1:9000</value>     <!-- RPC协议-->
-</property>
-<property>
-    <name>hadoop.tmp.dir</name>   
-    <value>/opt/hadoop-2.5</value>
-</property>
+        <value>hdfs://node1:9000</value>   <!-- RPC协议-->
+    </property>
+    <property>
+        <name>hadoop.tmp.dir</name>   
+        <value>/opt/hadoop-2.5</value>
+    </property>
 </configuration>
+```
 
 vim hdfs-site.xml
+```
 <configuration>
     <property>
         <name>dfs.namenode.secondary.http-address</name>         
         <value>node3:50090</value>   
-</property>
+    </property>
     <property>
         <name>dfs.namenode.secondary.https-address</name>         
         <value>node3:50091</value>   
-</property>
+    </property>
 </configuration>
 ```
 
