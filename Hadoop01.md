@@ -39,8 +39,8 @@ HDFS(Hadoop Distributed File System)：
   1. 一个文件只能有一个写者
   2. 仅支持append
 
-HDFS架构：
-- ![avatar](hdfsarchitecture.png)
+HDFS架构：<br>
+- ![avatar](hdfsarchitecture.png)<br>
 
 DataNode：存储数据
 - 文件被切分为固定大小的数据块
@@ -51,22 +51,23 @@ DataNode：存储数据
   2. 默认情况下每个Block都有三个副本
 - Block大小和副本数量通过Client端上传文件时设置，文件上传成功后副本数可以变更，Block Size不可变更。
 
-HDFS的设计思想：
-- ![avatar](hdfsblockreplication.png)
+HDFS的设计思想：<br>
+- ![avatar](hdfsblockreplication.png)<br>
 
 NameNode(NN)：保存Meta Data
 - NameNode主要功能：接受客户端的读写服务
 - NameNode保存meta data信息：
   1. 文件ownership和permissions
-2. 文件包含哪些块
-3. Block保存在哪个DataNode(由DataNode启动时上报)
+  2. 文件包含哪些块
+  3. Block保存在哪个DataNode(由DataNode启动时上报)
 - NameNode的metadata信息在启动后会加载到内存
   1. metadata存储到磁盘文件名为”fsimage”
-2. Block的位置信息不会保存到fsimage
-3. edits记录对metadata的操作日志
-为什么不直接操作fsimage文件？
-因为，fsimage位于磁盘，若直接修改，则频繁IO或者线程阻塞等问题。
-随着时间的增加，fsimage文件已经过时，需要修改更新。这个工作是由SecondaryNameNode来完成。
+  2. Block的位置信息不会保存到fsimage
+  3. edits记录对metadata的操作日志
+  <br>
+为什么不直接操作fsimage文件？<br>
+因为，fsimage位于磁盘，若直接修改，则频繁IO或者线程阻塞等问题。<br>
+随着时间的增加，fsimage文件已经过时，需要修改更新。这个工作是由SecondaryNameNode来完成。<br>
 
 SecondaryNameNode(SNN):
 - 它不是NN的备份(但可以做备份)，它的主要的工作是帮助NN合并edits log，修改fsimage,减少NN启动时间。
@@ -88,7 +89,7 @@ Block副本策略
 HDFS的写流程
 - ![avatar](hdfswrite.png)
 
-NameNode接受写请求。
+NameNode接受写请求。<br>
 
 HDFS的读流程
 - ![avatar](hdfsread.png)
