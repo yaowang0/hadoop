@@ -27,7 +27,7 @@ Reducer:
 Shuffle:
 - 在map和reduce中间的步骤
 - 把mapper输出按照某种key值重新切分和组合成n份，把key值符合某种范围的输出送到特定的reduce那里去处理
-- 可以简化reducer过程
+- 可以简化reducer过程<br>
 ![avatar](shuffle.png)<br>
 map -> buffer in memory -> partition,sort and spill to disk -> merge on disk -> fetch -> merge -> sort -> reduce<br>
 每一个键的hashCode % reduce的数量 来确定分区号，分区号确定到哪个reduce去执行.<br>
