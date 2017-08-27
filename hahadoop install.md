@@ -98,7 +98,7 @@ c)在dataDir目录中创建一个myid的文件，文件内容分别为1，2，3<
 7.在其中一个namenode上格式化：hdfs namenode -format<br>
 
 8.把刚刚格式化之后的元数据拷贝到另外一个namenode上<br>
-a)启动刚刚格式化的namenode   hadoop-daemon.sh start namenode<br>
+a)启动刚刚格式化的namenode:hadoop-daemon.sh start namenode<br>
 b)在没有格式化的namenode上执行：hdfs namenode -bootstrapStandby<br>
 c)启动第二个namenode<br>
 

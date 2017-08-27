@@ -119,3 +119,9 @@ DataNode<br>
 NameNode<br>
 QuorunPeerMain<br>
 
+shell命令示例：<br>
+hdfs dfs -mkdir /test<br>
+hdfs haadmin(高可用的管理)<br>
+
+IDEA连接：
+将配置文件拷贝到项目的src路径下即可。
