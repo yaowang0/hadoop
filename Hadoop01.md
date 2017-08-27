@@ -64,11 +64,11 @@ NameNode(NN)：保存Meta Data
   (1)metadata存储到磁盘文件名为”fsimage”<br>
   (2)Block的位置信息不会保存到fsimage<br>
   (3)edits记录对metadata的操作日志<br>
-
+<br>
 为什么不直接操作fsimage文件？<br>
 因为，fsimage位于磁盘，若直接修改，则频繁IO或者线程阻塞等问题。<br>
 随着时间的增加，fsimage文件已经过时，需要修改更新。这个工作是由SecondaryNameNode来完成。<br>
-<br>
+
 SecondaryNameNode(SNN):
 - 它不是NN的备份(但可以做备份)，它的主要的工作是帮助NN合并edits log，修改fsimage,减少NN启动时间。
 - SNN执行合并时机<br>

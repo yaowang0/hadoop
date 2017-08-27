@@ -1,9 +1,9 @@
 HDFS2.X
 - 解决HDFS1.0中单点故障和内存受限问题
-- 解决单点故障
+- 解决单点故障<br>
   (1)HDFS HA：通过主备NameNode解决<br>
   (2)如果主NameNode发生故障，则切换到备NameNode上<br>
-- 解决内存受限问题
+- 解决内存受限问题<br>
   (1)HDFS Federation<br>
   (2)水平扩展，支持多个NameNode<br>
   (3)每个NameNode分管一部分目录<br>
@@ -14,7 +14,7 @@ HDFS2.X
 
 HDFS2.X Architecture <br>
 ![avatar](hdfsha.png)<br>
-NameNode获取客户端的读写请求、存放metadata。
+NameNode获取客户端的读写请求、存放metadata。<br>
 两个NN一致性的关键：<br>
 (1)初始化时，一个NN format，另外一个不用format，直接共享初始化的元数据（fsimage）。<br>
 (2)共享edits文件<br>
@@ -28,7 +28,6 @@ FailoverController：<br>
 (1)通过远程命令的方式，控制NN状态的切换<br>
 (2)对NN进行健康检查，FailoverController向Zookeeper汇报<br>
 
-Zookeeper：<br>
-(1)内存数据库，保存了各个NN的状态。<br>
+Zookeeper的两个功能：<br>
+(1)内存数据库(保存了各个NN的状态)。<br>
 (2)选举。<br>
-
