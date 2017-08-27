@@ -13,7 +13,7 @@ HDFS2.X
 - HDFS1.X中的命令和API仍可以使用
 
 HDFS2.X
-![avatar](HDFSHA.png)
+![avatar](hdfsha.png)
 NameNode获取客户端的读写请求、存放metadata。
 两个NN一致性的关键：
 (1)初始化时，一个NN format，另外一个不用format，直接共享初始化的元数据（fsimage）。
