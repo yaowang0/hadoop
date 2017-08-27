@@ -1,0 +1,5 @@
+hello world
+hello hadoop
+hello mapreduce
+hello hdfs
+hello yarn
