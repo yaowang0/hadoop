@@ -8,7 +8,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 public class WordCountReducer extends Reducer<Text, IntWritable, Text, IntWritable>{
 
-
+	//每组调用一次，这一组数据特点：key相同，value可能有多个。
 	protected void reduce(Text arg0, Iterable<IntWritable> arg1,
 			Context arg2)
 			throws IOException, InterruptedException {

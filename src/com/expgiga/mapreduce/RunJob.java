@@ -17,7 +17,7 @@ public class RunJob {
 		try {
 			FileSystem fs =FileSystem.get(config);
 			
-			Job job =Job.getInstance(config);
+			Job job =Job.getInstance(config); //会将src或者classPath路径下的配置文件加载
 			job.setJarByClass(RunJob.class);
 			
 			job.setJobName("wc");
