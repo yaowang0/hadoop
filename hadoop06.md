@@ -50,7 +50,7 @@ scp ./* root@node5:/home/hadoop-2.5.1/etc/hadoop/<br>
 启动(在node1上，免密码登录)：<br>
 start-yarn.sh<br>
 它会启动：<br>
-resourcemanager<br> 没有启动备用的resourcemanager
+resourcemanager (它没有启动备用的resourcemanager)<br> 
 node3:nodemanager<br>
 node4:nodemanager<br>
 node5:nodemanager<br>
