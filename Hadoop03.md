@@ -19,8 +19,11 @@ NameNode获取客户端的读写请求、存放metadata。
 (1)初始化时，一个NN format，另外一个不用format，直接共享初始化的元数据（fsimage）。<br>
 (2)共享edits文件<br>
 这两个关键是共享文件放在JouralNodes集群中。同时JouralNodes来处理fsimage和edits的合并。同时合并Active和Standby内存中元数据。<br>
+
 DataNode会向两个NN汇报Block的位置信息。<br>
+
 Standby和Active的唯一区别就是Standby不接受客户端的请求。<br>
+
 Standby接管Active-Zookeeper的FailoverController节点。<br>
 FailoverController和NN是一一对应的，并且状态的是一致的。<br>
 
