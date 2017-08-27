@@ -64,7 +64,6 @@ NameNode(NN)：保存Meta Data
   (1)metadata存储到磁盘文件名为”fsimage”<br>
   (2)Block的位置信息不会保存到fsimage<br>
   (3)edits记录对metadata的操作日志<br>
-
 <br>
 为什么不直接操作fsimage文件？<br>
 因为，fsimage位于磁盘，若直接修改，则频繁IO或者线程阻塞等问题。<br>
