@@ -12,45 +12,34 @@ public class MyKey implements WritableComparable<MyKey> {
     private int month;
     private double hot;
 
-    public int getYear() {
+    int getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    void setYear(int year) {
         this.year = year;
     }
 
-    public int getMonth() {
+    int getMonth() {
         return month;
     }
 
-    public void setMonth(int month) {
+    void setMonth(int month) {
         this.month = month;
     }
 
-    public double getHot() {
+    double getHot() {
         return hot;
     }
 
-    public void setHot(double hot) {
+    void setHot(double hot) {
         this.hot = hot;
     }
 
-    public void readFields(DataInput arg0) throws IOException {
-        this.year = arg0.readInt();
-        this.month = arg0.readInt();
-        this.hot = arg0.readDouble();
-    }
-
-    public void write(DataOutput arg0) throws IOException {
-        arg0.writeInt(year);
-        arg0.writeInt(month);
-        arg0.writeDouble(hot);
-    }
-
-    //判断对象是否是同一个对象，当该对象作为输出的key
+    //判断对象是是否是同一个对象，当该对象作为输出的key时，需要比较
+    @Override
     public int compareTo(MyKey o) {
-        int r1 = Integer.compare(this.year, o.getYear());
+        int r1 = Integer.compare(this.year, o.year);
         if (r1 == 0) {
             int r2 = Integer.compare(this.month, o.getMonth());
             if (r2 == 0) {
@@ -63,4 +52,19 @@ public class MyKey implements WritableComparable<MyKey> {
         }
     }
 
+    //序列化
+    @Override
+    public void write(DataOutput dataOutput) throws IOException {
+        dataOutput.writeInt(year);
+        dataOutput.writeInt(month);
+        dataOutput.writeDouble(hot);
+    }
+
+    //反序列化
+    @Override
+    public void readFields(DataInput dataInput) throws IOException {
+        this.year = dataInput.readInt();
+        this.month = dataInput.readInt();
+        this.hot = dataInput.readDouble();
+    }
 }

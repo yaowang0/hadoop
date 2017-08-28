@@ -1,6 +1,5 @@
 package com.expgiga.mapreduce.weather;
 
-
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,14 +19,16 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
+//需求：找出每年每月中气温最高的三个
+
 public class RunJob {
 
     public static void main(String[] args) {
         Configuration config = new Configuration();
-        config.set("fs.defaultFS", "hdfs://node1:8020");
-        config.set("yarn.resourcemanager.hostname", "node1");
+//        config.set("fs.defaultFS", "hdfs://node1:8020");
+//        config.set("yarn.resourcemanager.hostname", "node1");
 //		config.set("mapred.jar", "C:\\Users\\Administrator\\Desktop\\wc.jar");
-//		config.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", ",");
+//		config.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", ","); //自定义分割符号
         try {
             FileSystem fs = FileSystem.get(config);
 
@@ -47,11 +48,11 @@ public class RunJob {
 
             job.setNumReduceTasks(3);
 
-            job.setInputFormatClass(KeyValueTextInputFormat.class);
+            job.setInputFormatClass(KeyValueTextInputFormat.class); //默认制表符分割
 
-            FileInputFormat.addInputPath(job, new Path("/usr/input/weather"));
+            FileInputFormat.addInputPath(job, new Path("E:/hadoop/src/data/weather"));
 
-            Path outpath = new Path("/usr/output/weather");
+            Path outpath = new Path("E:/hadoop/output/weather");
             if (fs.exists(outpath)) {
                 fs.delete(outpath, true);
             }
@@ -70,6 +71,7 @@ public class RunJob {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         NullWritable v = NullWritable.get();
 
+        @Override
         protected void map(Text key, Text value,
                            Context context)
                 throws IOException, InterruptedException {
@@ -93,6 +95,8 @@ public class RunJob {
     }
 
     static class WeatherReducer extends Reducer<MyKey, DoubleWritable, Text, NullWritable> {
+
+        @Override
         protected void reduce(MyKey arg0, Iterable<DoubleWritable> arg1,
                               Context arg2)
                 throws IOException, InterruptedException {

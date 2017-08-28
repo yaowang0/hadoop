@@ -31,9 +31,9 @@ public class RunJob {
             job.setMapOutputKeyClass(Text.class);
             job.setMapOutputValueClass(IntWritable.class);
 
-            FileInputFormat.addInputPath(job, new Path("wc.txt"));
+            FileInputFormat.addInputPath(job, new Path("E:/hadoop/src/data/wc.txt"));
 
-            Path outpath = new Path("E:/hadoop/output");
+            Path outpath = new Path("E:/hadoop/output/wordcout");
             if (fs.exists(outpath)) {
                 fs.delete(outpath, true);
             }
